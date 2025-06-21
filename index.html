@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Můj Web Blog</title>
+    <style>
+        :root {
+            --crimson-passion: #F7464E;
+            --ivory-whisper: #F7F8F3;
+            --teal-splash: #78BCC4;
+            --midnight-abyss: #002C3E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--midnight-abyss);
+            background-color: var(--ivory-whisper);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--midnight-abyss), var(--teal-splash));
+            color: var(--ivory-whisper);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--teal-splash);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--ivory-whisper);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--midnight-abyss);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .post {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--crimson-passion);
+        }
+
+        .post h2 {
+            color: var(--midnight-abyss);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .post-meta {
+            color: var(--teal-splash);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .post p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .read-more {
+            color: var(--crimson-passion);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--midnight-abyss);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar h3 {
+            color: var(--midnight-abyss);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--teal-splash);
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar a {
+            color: var(--teal-splash);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: var(--crimson-passion);
+        }
+
+        footer {
+            background-color: var(--midnight-abyss);
+            color: var(--ivory-whisper);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        .btn {
+            background-color: var(--crimson-passion);
+            color: var(--ivory-whisper);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--midnight-abyss);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Můj Web Blog</h1>
+        <p>Sdílím své myšlenky a zkušenosti</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Domů</a></li>
+            <li><a href="#about">O mně</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <article class="post">
+                <h2>Vítejte na mém blogu</h2>
+                <div class="post-meta">Publikováno 21. června 2025</div>
+                <p>Vítejte na mém osobním blogu! Zde budu sdílet své myšlenky, zkušenosti a zajímavé objevy ze světa technologií a života obecně.</p>
+                <p>Tento blog je postavený na jednoduchých technologiích a zaměřuje se na kvalitní obsah a přehledný design. Doufám, že zde najdete něco užitečného!</p>
+                <a href="#" class="read-more">Číst více →</a>
+            </article>
+
+            <article class="post">
+                <h2>Jak začít s webovým vývojem</h2>
+                <div class="post-meta">Publikováno 20. června 2025</div>
+                <p>Webový vývoj může na první pohled vypadat složitě, ale s správným přístupem a postupnými kroky se můžete rychle naučit základy.</p>
+                <p>V tomto článku se podíváme na nejdůležitější technologie: HTML pro strukturu, CSS pro stylování a JavaScript pro interaktivitu.</p>
+                <a href="#" class="read-more">Číst více →</a>
+            </article>
+
+            <article class="post">
+                <h2>Tipy pro lepší produktivitu</h2>
+                <div class="post-meta">Publikováno 19. června 2025</div>
+                <p>Produktivita není jen o tom dělat více věcí rychleji. Je to o tom dělat správné věci efektivně a s kvalitou.</p>
+                <p>Podělím se s vámi o několik osvědčených technik, které mi pomohly zlepšit mou každodenní produktivitu.</p>
+                <a href="#" class="read-more">Číst více →</a>
+            </article>
+        </main>
+
+        <aside>
+            <div class="sidebar">
+                <h3>Nejnovější příspěvky</h3>
+                <ul>
+                    <li><a href="#">Vítejte na mém blogu</a></li>
+                    <li><a href="#">Jak začít s webovým vývojem</a></li>
+                    <li><a href="#">Tipy pro lepší produktivitu</a></li>
+                    <li><a href="#">Úvod do responzivního designu</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar">
+                <h3>Kategorie</h3>
+                <ul>
+                    <li><a href="#">Technologie (3)</a></li>
+                    <li><a href="#">Produktivita (2)</a></li>
+                    <li><a href="#">Osobní rozvoj (1)</a></li>
+                    <li><a href="#">Návody (4)</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar">
+                <h3>O autorovi</h3>
+                <p>Jsem nadšenec do technologií a ráda sdílím své zkušenosti. Věřím, že vzdělávání by mělo být přístupné všem.</p>
+                <a href="#" class="btn">Kontaktujte mě</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Můj Web Blog. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const readMoreLinks = document.querySelectorAll('.read-more');
+            
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Tato funkcionalita bude brzy dostupná!');
+                });
+            });
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.textContent.toLowerCase();
+                    alert(`Přechod na sekci: ${section}`);
+                });
+            });
+
+            console.log('Blog je připraven k použití!');
+        });
+    </script>
+</body>
+</html>
