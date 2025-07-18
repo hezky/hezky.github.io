@@ -1,0 +1,6 @@
+{
+  "title": "Jak na React Hooks",
+  "date": "2025-07-19",
+  "slug": "article-2",
+  "content": "\n## React Hooks - kompletní průvodce\n\nReact Hooks jsou jednou z nejdůležitějších funkcí moderního Reactu. Pojďme se podívat na ty nejpoužívanější.\n\n### Seznam základních hooků\n\n1. **useState** - pro správu lokálního stavu\n2. **useEffect** - pro side efekty\n3. **useContext** - pro práci s kontextem\n4. **useReducer** - komplexnější správa stavu\n5. **useMemo** - memoizace hodnot\n6. **useCallback** - memoizace funkcí\n\n### Příklad použití useState\n\n```javascript\nconst [count, setCount] = useState(0);\n\nconst increment = () => {\n  setCount(count + 1);\n};\n```\n\n### Pravidla hooků\n\n- Volejte hooky pouze na nejvyšší úrovni funkce\n- Volejte hooky pouze z React funkcí\n- Dodržujte pořadí volání hooků\n\n### Závěr\n\nHooks jsou mocný nástroj, který zjednodušuje práci s Reactem. Stojí za to je ovládnout!"
+}
