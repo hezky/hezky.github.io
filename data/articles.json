@@ -1,0 +1,146 @@
+[
+  {
+    "id": "article-1753199626390",
+    "title": "Uživatelská příručka - Lab Blog",
+    "date": "2025-07-22",
+    "filename": "articles/article-1753199626390.json",
+    "description": "Lab Blog je moderní aplikace pro čtení a vytváření blogových článků s podporou Markdown formátu. Aplikace nabízí jedinečný \\\"Eye mód\\\", který umožňuje přepínat mezi čistým čtenářským prostředím a plnohodnotným editačním rozhraním.",
+    "tags": [
+      "markdown",
+      "blog",
+      "editor"
+    ],
+    "category": "tutorial",
+    "metadata": {
+      "readingTime": "10 min"
+    },
+    "title.en": "User Guide - Lab Blog",
+    "description.en": "Lab Blog is a modern application for reading and creating blog articles with support for the Markdown format. The application offers a unique \\\"Eye mode\\\" that allows you to switch between a clean reading environment and a full-fledged editing interface."
+  },
+  {
+    "id": "example-images",
+    "title": "📸 Ukázka práce s obrázky",
+    "date": "2025-07-20",
+    "filename": "articles/example-images.json",
+    "description": "Naučte se efektivně pracovat s obrázky ve vašich článcích. Optimalizace, lazy loading a responzivní obrázky.",
+    "tags": [
+      "Images",
+      "Media",
+      "Optimization"
+    ],
+    "category": "media",
+    "metadata": {
+      "readingTime": "4 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  },
+  {
+    "id": "article-001",
+    "title": "Úvod do Reactu - Základy a koncepty",
+    "date": "2025-07-19",
+    "filename": "articles/article-001.json",
+    "description": "Objevte sílu Reactu - moderní JavaScript knihovny pro vytváření interaktivních uživatelských rozhraní. Naučte se základní koncepty jako komponenty, JSX, state a props.",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Frontend"
+    ],
+    "category": "framework",
+    "metadata": {
+      "readingTime": "5 min"
+    },
+    "title.en": "Introduction to React - Basics and Concepts",
+    "description.en": "Discover the power of React - a modern JavaScript library for building interactive user interfaces. Learn basic concepts like components, JSX, state and props."
+  },
+  {
+    "id": "demo-styling",
+    "title": "🎨 Demo stylů - Ukázka formátování",
+    "date": "2025-07-19",
+    "filename": "articles/demo-styling.json",
+    "description": "Kompletní ukázka všech podporovaných stylů a formátování v markdown editoru. Ideální pro testování a inspiraci.",
+    "tags": [
+      "Markdown",
+      "Styling",
+      "Demo"
+    ],
+    "category": "demo",
+    "metadata": {
+      "readingTime": "3 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  },
+  {
+    "id": "article-002",
+    "title": "Pokročilý CSS Grid - Responzivní layouty",
+    "date": "2025-07-18",
+    "filename": "articles/article-002.json",
+    "description": "Ovládněte CSS Grid a vytvářejte komplexní responzivní layouty s minimálním úsilím. Od základů až po pokročilé techniky včetně subgridu.",
+    "tags": [
+      "CSS",
+      "Grid",
+      "Design"
+    ],
+    "category": "styling",
+    "metadata": {
+      "readingTime": "7 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  },
+  {
+    "id": "article-003",
+    "title": "JavaScript Async/Await - Asynchronní programování",
+    "date": "2025-07-17",
+    "filename": "articles/article-003.json",
+    "description": "Pochopte asynchronní programování v JavaScriptu. Naučte se pracovat s promises, async/await a zvládněte zpracování chyb.",
+    "tags": [
+      "JavaScript",
+      "Async",
+      "Backend"
+    ],
+    "category": "javascript",
+    "metadata": {
+      "readingTime": "6 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  },
+  {
+    "id": "article-004",
+    "title": "Vite - Moderní build nástroj",
+    "date": "2025-07-16",
+    "filename": "articles/article-004.json",
+    "description": "Zrychlete svůj vývoj s Vite - bleskurově rychlým build nástrojem. HMR, optimalizace bundlů a skvělá vývojářská zkušenost.",
+    "tags": [
+      "Vite",
+      "Build Tools",
+      "DX"
+    ],
+    "category": "tools",
+    "metadata": {
+      "readingTime": "4 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  },
+  {
+    "id": "article-005",
+    "title": "LESS preprocessor - Efektivní stylování",
+    "date": "2025-07-15",
+    "filename": "articles/article-005.json",
+    "description": "Zefektivněte psaní CSS s LESS preprocessorem. Proměnné, mixiny, vnořování a další funkce pro lepší organizaci stylů.",
+    "tags": [
+      "LESS",
+      "CSS",
+      "Preprocessor"
+    ],
+    "category": "styling",
+    "metadata": {
+      "readingTime": "5 min"
+    },
+    "title.en": "Translation not available",
+    "description.en": "Translation not available"
+  }
+]
