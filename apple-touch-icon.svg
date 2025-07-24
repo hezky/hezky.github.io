@@ -1,0 +1,45 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with modern gradient -->
+  <rect width="180" height="180" rx="20" fill="url(#appleBg)"/>
+  
+  <!-- Main code symbol with better proportions -->
+  <g transform="translate(30, 45)">
+    <!-- Left bracket < -->
+    <path d="M20 15L5 45L20 75" stroke="#00D9FF" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Forward slash / -->
+    <path d="M40 75L80 15" stroke="#FF6B35" stroke-width="8" fill="none" stroke-linecap="round"/>
+    
+    <!-- Right bracket > -->
+    <path d="M100 15L115 45L100 75" stroke="#78BCC4" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Decorative code dots -->
+  <g opacity="0.4">
+    <circle cx="45" cy="140" r="4" fill="#FFFFFF"/>
+    <circle cx="90" cy="150" r="3" fill="#FFFFFF"/>
+    <circle cx="135" cy="140" r="4" fill="#FFFFFF"/>
+    <circle cx="60" cy="155" r="2" fill="#00D9FF"/>
+    <circle cx="120" cy="155" r="2" fill="#78BCC4"/>
+  </g>
+  
+  <!-- Subtle tech pattern in corners -->
+  <g opacity="0.1">
+    <rect x="10" y="10" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="15" y="10" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="168" y="10" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="163" y="10" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="10" y="168" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="15" y="168" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="168" y="168" width="2" height="2" fill="#FFFFFF"/>
+    <rect x="163" y="168" width="2" height="2" fill="#FFFFFF"/>
+  </g>
+  
+  <defs>
+    <linearGradient id="appleBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#21262D"/>
+      <stop offset="50%" style="stop-color:#161B22"/>
+      <stop offset="100%" style="stop-color:#0D1117"/>
+    </linearGradient>
+  </defs>
+</svg>
