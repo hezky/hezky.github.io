@@ -1,7 +1,7 @@
 [
   {
     "id": "article-1753387272610",
-    "title": "Proč nikdy nepoužívat indexy pole jako ID v @dnd-kit: Komplexní průvodce pro React vývojáře",
+    "title": "@dnd-kit: Problém s indexy jako ID",
     "date": "2025-07-24",
     "filename": "articles/article-1753387272610.json",
     "description": "Používání indexů pole jako identifikátorů v knihovně @dnd-kit může vést k závažným chybám při přetahování, ztrátě interního stavu komponent, nesprávným animacím a výkonovým problémům. Tento článek vysvětluje, proč jsou stabilní ID klíčové pro správné fungování drag & drop logiky, jak @dnd-kit pracuje s identifikátory a nabízí správné techniky generování a správy ID. Vhodné pro všechny React vývojáře, kteří chtějí tvořit robustní a bezchybné uživatelské rozhraní.",
@@ -14,7 +14,7 @@
     "metadata": {
       "readingTime": "7 min"
     },
-    "title.en": "Why you should never use array indices as IDs in @dnd-kit: A comprehensive guide for React developers",
+    "title.en": "@dnd-kit: Problem with indexes as IDs",
     "description.en": "Using array indices as identifiers in the @dnd-kit library can lead to serious drag and drop errors, loss of internal component state, incorrect animations, and performance issues. This article explains why stable IDs are crucial for proper drag & drop logic, how @dnd-kit works with identifiers, and provides proper techniques for generating and managing IDs. Suitable for all React developers who want to create robust and error-free user interfaces."
   },
   {
