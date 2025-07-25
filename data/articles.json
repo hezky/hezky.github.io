@@ -1,22 +1,22 @@
 [
   {
-    "id": "article-1753439557521",
+    "id": "article-1753446746048",
     "title": "Čistý kód v praxi: Kompletní refaktoring React aplikace",
     "date": "2025-07-25",
-    "filename": "articles/article-1753439557521.json",
-    "description": "Čistý kód není jen o estetice nebo akademických principech. Je to praktický nástroj, který šetří čas, peníze a nervy. V tomto článku vám ukážu, jak jsem kompletně refaktoroval React aplikaci podle principů čistého kódu - od monolitického 566řádkového souboru až po modulární, čitelnou a udržitelnou architekturu.",
+    "filename": "articles/article-1753446746048.json",
+    "description": "V tomto článku vám ukážu, jak jsem kompletně refaktoroval React aplikaci podle principů čistého kódu - od monolitického 566řádkového souboru až po modulární, čitelnou a udržitelnou architekturu.",
     "tags": [
       "React",
       "Javascript",
       "frontend",
       "clean code"
     ],
-    "category": "tutorial",
+    "category": "concept",
     "metadata": {
-      "readingTime": "8 min"
+      "readingTime": "12 min"
     },
     "title.en": "Clean Code in Practice: Complete React Application Refactoring",
-    "description.en": "Clean code isn't just about aesthetics or academic principles. It's a practical tool that saves time, money, and nerves. In this article, I'll show you how I completely refactored a React application following clean code principles - from a monolithic 566-line file to a modular, readable, and maintainable architecture."
+    "description.en": "In this article, I'll show you how I completely refactored a React application following clean code principles - from a monolithic 566-line file to a modular, readable, and maintainable architecture."
   },
   {
     "id": "article-1753387272610",
