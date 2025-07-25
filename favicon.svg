@@ -14,11 +14,6 @@
     <path d="M16 2L19 8L16 14" stroke="#78BCC4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   
-  <!-- Small dots representing code/pixels -->
-  <circle cx="10" cy="24" r="1" fill="#FFFFFF" opacity="0.6"/>
-  <circle cx="16" cy="26" r="1" fill="#FFFFFF" opacity="0.4"/>
-  <circle cx="22" cy="24" r="1" fill="#FFFFFF" opacity="0.6"/>
-  
   <!-- Gradient definitions -->
   <defs>
     <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">

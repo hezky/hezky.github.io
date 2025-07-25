@@ -14,11 +14,6 @@
     <path d="M20 2L23 8L20 14" stroke="#78BCC4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   
-  <!-- Decorative elements -->
-  <circle cx="8" cy="26" r="1.5" fill="#FFFFFF" opacity="0.5"/>
-  <circle cx="16" cy="28" r="1" fill="#FFFFFF" opacity="0.3"/>
-  <circle cx="24" cy="26" r="1.5" fill="#FFFFFF" opacity="0.5"/>
-  
   <defs>
     <linearGradient id="bg32" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#161B22"/>
