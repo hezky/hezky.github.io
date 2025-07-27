@@ -7,7 +7,7 @@
     "description": "Článek obsahuje: Technické detaily s příklady kódu, Vysvětlení, jak věci fungují \"pod kapotou\", Praktické tipy a řešení častých problémů, Alternativy a budoucnost těchto technologií,\nBest practices pro práci s CRA",
     "tags": [
       "frontend",
-      "Javascript",
+      "JS",
       "Create React App",
       "React Scripts",
       "Proxy"
@@ -18,6 +18,24 @@
     },
     "title.en": "Technology: Create React App, React Scripts, Proxy configuration",
     "description.en": "Článek obsahuje: Technické detaily s příklady kódu, Vysvětlení, jak věci fungují \"pod kapotou\", Praktické tipy a řešení častých problémů, Alternativy a budoucnost těchto technologií,\nBest practices pro práci s CRA\n213 / 5 000\nThe article contains: Technical details with code examples, Explanations of how things work \"under the hood\", Practical tips and solutions to common problems, Alternatives and the future of these technologies, Best practices for working with CRA"
+  },
+  {
+    "id": "article-1753643790092",
+    "title": "Komplexní porovnání React frameworků a build nástrojů 2025",
+    "date": "2025-07-27",
+    "filename": "articles/article-1753643790092.json",
+    "description": "Create React App bylo ukončeno v únoru 2025. Vite nahradil CRA jako nejrychlejší nástroj pro SPA (start <1s). Next.js vede jako full-stack framework s 6M+ stažení týdně a podporou React Server Components. Remix nabízí web-first přístup s nested routingem. Gatsby ustupuje do pozadí. Doporučení: Vite pro SPA, Next.js pro komplexní aplikace.",
+    "tags": [
+      "React",
+      "Javascript",
+      "frontend"
+    ],
+    "category": "framework",
+    "metadata": {
+      "readingTime": "8 min"
+    },
+    "title.en": "A comprehensive comparison of React frameworks and build tools 2025",
+    "description.en": "Create React App was deprecated in February 2025. Vite replaced CRA as the fastest tool for SPAs (startup <1s). Next.js leads as a full-stack framework with 6M+ weekly downloads and React Server Components support. Remix offers a web-first approach with nested routing. Gatsby is declining. Recommendation: Vite for SPAs, Next.js for complex applications."
   },
   {
     "id": "article-1753446746048",
