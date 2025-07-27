@@ -5,7 +5,7 @@
   "description": "Článek obsahuje: Technické detaily s příklady kódu, Vysvětlení, jak věci fungují \"pod kapotou\", Praktické tipy a řešení častých problémů, Alternativy a budoucnost těchto technologií,\nBest practices pro práci s CRA",
   "tags": [
     "frontend",
-    "JS",
+    "Javascript",
     "Create React App",
     "React Scripts",
     "Proxy"
