@@ -1,5 +1,25 @@
 [
   {
+    "id": "article-1753624398782",
+    "title": "Technologie : Create React App, React Scripts,  Proxy konfigurace",
+    "date": "2025-07-27",
+    "filename": "articles/article-1753624398782.json",
+    "description": "Článek obsahuje: Technické detaily s příklady kódu, Vysvětlení, jak věci fungují \"pod kapotou\", Praktické tipy a řešení častých problémů, Alternativy a budoucnost těchto technologií,\nBest practices pro práci s CRA",
+    "tags": [
+      "frontend",
+      "JS",
+      "Create React App",
+      "React Scripts",
+      "Proxy"
+    ],
+    "category": "framework",
+    "metadata": {
+      "readingTime": "10 min"
+    },
+    "title.en": "Technology: Create React App, React Scripts, Proxy configuration",
+    "description.en": "Článek obsahuje: Technické detaily s příklady kódu, Vysvětlení, jak věci fungují \"pod kapotou\", Praktické tipy a řešení častých problémů, Alternativy a budoucnost těchto technologií,\nBest practices pro práci s CRA\n213 / 5 000\nThe article contains: Technical details with code examples, Explanations of how things work \"under the hood\", Practical tips and solutions to common problems, Alternatives and the future of these technologies, Best practices for working with CRA"
+  },
+  {
     "id": "article-1753446746048",
     "title": "Čistý kód v praxi: Kompletní refaktoring React aplikace",
     "date": "2025-07-25",
