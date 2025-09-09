@@ -1,23 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon for modern browsers -->
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <!-- Fallback ICO favicon for older browsers -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.svg" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.svg" />
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.svg" />
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="./site.webmanifest" />
-    <meta name="theme-color" content="#0D1117" />
+    <link rel="icon" type="image/svg+xml" href="/blog-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technical Blog</title>
-    <script type="module" crossorigin src="./assets/index-C6cU6kLm.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CCBt93dm.css">
+    
+    <!-- Primary Meta Tags -->
+    <title>Mini Blog - Místo pro sdílení myšlenek</title>
+    <meta name="title" content="Mini Blog - Místo pro sdílení myšlenek" />
+    <meta name="description" content="Moderní blog pro sdílení myšlenek, nápadů a zkušeností ze světa webového vývoje. Články o React, JavaScript, CSS a dalších technologiích." />
+    <meta name="keywords" content="blog, web development, React, JavaScript, CSS, programování, tutoriály" />
+    <meta name="author" content="Mini Blog Team" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mini-blog.cz/" />
+    <meta property="og:title" content="Mini Blog - Místo pro sdílení myšlenek" />
+    <meta property="og:description" content="Moderní blog pro sdílení myšlenek, nápadů a zkušeností ze světa webového vývoje." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="cs_CZ" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mini-blog.cz/" />
+    <meta property="twitter:title" content="Mini Blog - Místo pro sdílení myšlenek" />
+    <meta property="twitter:description" content="Moderní blog pro sdílení myšlenek, nápadů a zkušeností ze světa webového vývoje." />
+    <meta property="twitter:image" content="/og-image.jpg" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Czech" />
+    <meta name="revisit-after" content="7 days" />
+    <script type="module" crossorigin src="/assets/index-l0el7Gh9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dy9cZk56.css">
   </head>
   <body>
+    <script>
+      // Apply saved theme immediately to prevent flash
+      (function() {
+        const savedTheme = localStorage.getItem('selectedTheme') || 'modern';
+        document.body.classList.add('theme-' + savedTheme);
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>
