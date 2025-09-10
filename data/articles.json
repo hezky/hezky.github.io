@@ -1,5 +1,31 @@
 [
   {
+    "id": "article-1757520132204",
+    "title": "Mini Blog Platform, moderního řešení pro publikování článků",
+    "title.en": "Mini Blog Platform, a modern solution for publishing articles",
+    "date": "2025-09-10",
+    "filename": "articles/article-1757520132204.json",
+    "description": "Mini Blog Platform je moderní řešení pro publikování článků postavené na nejnovějších technologiích React ekosystému. Projekt je hostován na GitHub Pages pod doménou hezky.github.io.",
+    "description.en": "\nMini Blog Platform is a modern solution for publishing articles built on the latest technologies of the React ecosystem. The project is hosted on GitHub Pages under the domain hezky.github.io.",
+    "tags": [
+      "web",
+      "blog",
+      "Javascript",
+      "Frontend"
+    ],
+    "tags.en": [
+      "web",
+      "blog",
+      "Javascript",
+      "frontend"
+    ],
+    "category": "tutorial, technologie",
+    "category.en": "tutorial, technology",
+    "metadata": {
+      "readingTime": "5 min"
+    }
+  },
+  {
     "id": "article-1753387272610",
     "title": "@dnd-kit: Problém s indexy jako ID",
     "date": "2025-07-24",
