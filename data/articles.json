@@ -1,15 +1,17 @@
 [
   {
-    "id": "article-1757853293213",
+    "id": "article-1757854696834",
     "title": "Universal Process Manager",
     "title.en": "Universal Process Manager",
     "date": "2025-09-14",
-    "filename": "articles/article-1757853293213.json",
+    "filename": "articles/article-1757854696834.json",
     "description": "Robustní systém pro správu procesů s automatickým restartováním, monitoringem zdraví a čistým oddělením od spravovaných aplikací.",
     "description.en": "A robust, production-ready process management system with automatic restarts, health monitoring, and clean separation from managed applications.",
     "tags": [
       "process-manager",
-      "python. sqlite. architektura",
+      "python",
+      "sqlite",
+      "architektura",
       "monitoring",
       "zdravi-aplikaci"
     ],
@@ -22,7 +24,7 @@
       "health-checks"
     ],
     "category": "tutorial, technologie",
-    "category.en": "tutorial, technologie",
+    "category.en": "tutorial, technology",
     "metadata": {
       "readingTime": "15 min"
     }
