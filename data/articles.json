@@ -1,5 +1,33 @@
 [
   {
+    "id": "article-1757876922290",
+    "title": "Mini Blog Platform",
+    "title.en": "Mini Blog Platform",
+    "date": "2025-09-14",
+    "filename": "articles/article-1757876922290.json",
+    "description": "Moderní řešení pro publikování článků v React ekosystému.",
+    "description.en": "A Modern Solution for Article Publishing in the React Ecosystem.",
+    "tags": [
+      "React",
+      "Vite",
+      "GitHub Pages",
+      "SPA",
+      "Blog"
+    ],
+    "tags.en": [
+      "React",
+      "Vite",
+      "GitHub Pages",
+      "SPA",
+      "Blog"
+    ],
+    "category": "tutorial, technologie, Web",
+    "category.en": "tutorial, technology, Web",
+    "metadata": {
+      "readingTime": "15 min"
+    }
+  },
+  {
     "id": "article-1757854696834",
     "title": "Universal Process Manager",
     "title.en": "Universal Process Manager",
