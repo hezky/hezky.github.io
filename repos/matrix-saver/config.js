@@ -1,3 +1,3 @@
 window.__APP_CONFIG__ = {
-  repository: "",
+  repository: "repos/matrix-saver/",
 };
