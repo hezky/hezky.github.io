@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .matrix-bg { fill: #1A1A1A; }
+      .matrix-primary { fill: #5CBCD0; font-family: 'Courier New', monospace; font-size: 4px; font-weight: bold; }
+      .matrix-accent { fill: #F7DE60; font-family: 'Courier New', monospace; font-size: 4px; font-weight: bold; }
+      .matrix-fade { fill: #002C3E; font-family: 'Courier New', monospace; font-size: 4px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" class="matrix-bg"/>
+
+  <!-- Matrix binary numbers -->
+  <!-- Row 1 -->
+  <text x="3" y="6" class="matrix-primary">10110</text>
+  <text x="19" y="6" class="matrix-fade">01</text>
+
+  <!-- Row 2 -->
+  <text x="1" y="11" class="matrix-accent">01</text>
+  <text x="9" y="11" class="matrix-primary">11010</text>
+  <text x="25" y="11" class="matrix-fade">1</text>
+
+  <!-- Row 3 -->
+  <text x="5" y="16" class="matrix-primary">10011</text>
+  <text x="23" y="16" class="matrix-primary">10</text>
+
+  <!-- Row 4 -->
+  <text x="2" y="21" class="matrix-fade">110</text>
+  <text x="14" y="21" class="matrix-accent">01</text>
+  <text x="22" y="21" class="matrix-primary">101</text>
+
+  <!-- Row 5 -->
+  <text x="6" y="26" class="matrix-primary">01101</text>
+  <text x="28" y="26" class="matrix-fade">1</text>
+
+  <!-- Row 6 -->
+  <text x="1" y="31" class="matrix-primary">10</text>
+  <text x="11" y="31" class="matrix-fade">001</text>
+  <text x="23" y="31" class="matrix-accent">11</text>
+</svg>
