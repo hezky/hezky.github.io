@@ -2,63 +2,34 @@
   {
     "id": "article-1758142547398",
     "title": "Matrix Binary Screensaver",
-    "title.en": "Matrix Binary Screensaver",
     "date": "2025-09-17",
     "filename": "articles/article-1758142547398.json",
     "description": "Cesta od ikonického efektu k moderní webové implementaci.",
-    "description.en": "Journey from Iconic Effect to Modern Web Implementation.",
     "tags": [
-      "React",
-      "Javascript",
-      "Frontend"
-    ],
-    "tags.en": [
       "React",
       "Javascript",
       "Frontend"
     ],
     "category": "tutorial, technologie",
-    "category.en": "tutorial, technology",
     "metadata": {
+      "author": "David Hezky",
       "readingTime": "10 min"
-    }
-  },
-  {
-    "id": "article-1757879304405",
-    "title": "Mini Blog Platform",
-    "title.en": "Mini Blog Platform",
-    "date": "2025-09-14",
-    "filename": "articles/article-1757879304405.json",
-    "description": "Moderní řešení pro publikování článků v React ekosystému.",
-    "description.en": "A Modern Solution for Article Publishing in the React Ecosystem.",
-    "tags": [
-      "React",
-      "Vite",
-      "GitHub Pages",
-      "SPA",
-      "Blog"
-    ],
+    },
+    "title.en": "Matrix Binary Screensaver",
+    "description.en": "Journey from Iconic Effect to Modern Web Implementation.",
     "tags.en": [
       "React",
-      "Vite",
-      "GitHub Pages",
-      "SPA",
-      "Blog"
+      "Javascript",
+      "Frontend"
     ],
-    "category": "tutorial, technologie, Web",
-    "category.en": "tutorial, technology, Web",
-    "metadata": {
-      "readingTime": "15 min"
-    }
+    "category.en": "tutorial, technology"
   },
   {
     "id": "article-1757854696834",
     "title": "Universal Process Manager",
-    "title.en": "Universal Process Manager",
     "date": "2025-09-14",
     "filename": "articles/article-1757854696834.json",
     "description": "Robustní systém pro správu procesů s automatickým restartováním, monitoringem zdraví a čistým oddělením od spravovaných aplikací.",
-    "description.en": "A robust, production-ready process management system with automatic restarts, health monitoring, and clean separation from managed applications.",
     "tags": [
       "process-manager",
       "python",
@@ -67,6 +38,13 @@
       "monitoring",
       "zdravi-aplikaci"
     ],
+    "category": "tutorial, technologie",
+    "metadata": {
+      "author": "Mini Blog Team",
+      "readingTime": "15 min"
+    },
+    "title.en": "Universal Process Manager",
+    "description.en": "A robust, production-ready process management system with automatic restarts, health monitoring, and clean separation from managed applications.",
     "tags.en": [
       "process-manager",
       "python",
@@ -75,11 +53,36 @@
       "monitoring",
       "health-checks"
     ],
-    "category": "tutorial, technologie",
-    "category.en": "tutorial, technology",
+    "category.en": "tutorial, technology"
+  },
+  {
+    "id": "article-1757879304405",
+    "title": "Mini Blog Platform",
+    "date": "2025-09-14",
+    "filename": "articles/article-1757879304405.json",
+    "description": "Moderní řešení pro publikování článků v React ekosystému.",
+    "tags": [
+      "React",
+      "Vite",
+      "GitHub Pages",
+      "SPA",
+      "Blog"
+    ],
+    "category": "tutorial, technologie, Web, SPA",
     "metadata": {
+      "author": "David Hezky",
       "readingTime": "15 min"
-    }
+    },
+    "title.en": "Mini Blog Platform",
+    "description.en": "A Modern Solution for Article Publishing in the React Ecosystem.",
+    "tags.en": [
+      "React",
+      "Vite",
+      "GitHub Pages",
+      "SPA",
+      "Blog"
+    ],
+    "category.en": "tutorial, technology, Web, SPA"
   },
   {
     "id": "article-1753387272610",
@@ -94,6 +97,7 @@
     ],
     "category": "framework",
     "metadata": {
+      "author": "David Hezky",
       "readingTime": "7 min"
     },
     "title.en": "@dnd-kit: Problem with indexes as IDs",
