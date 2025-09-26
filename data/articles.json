@@ -1,5 +1,49 @@
 [
   {
+    "id": "article-1758915461515",
+    "title": "Pomíjivost",
+    "date": "2025-09-26",
+    "filename": "articles/article-1758915461515.json",
+    "description": "Pomíjivost z pohledu tibetského buddhismu linie Karma Kagju",
+    "tags": [
+      "budhismus"
+    ],
+    "category": "budhismus",
+    "metadata": {
+      "readingTime": "20 min"
+    },
+    "title.en": "Transience",
+    "description.en": "Transience from the perspective of Tibetan Buddhism of the Karma Kagyu lineage",
+    "tags.en": [
+      "buddhismus"
+    ],
+    "category.en": "buddhismus"
+  },
+  {
+    "id": "article-1758728557231",
+    "title": "XML Viewer SPA",
+    "date": "2025-09-24",
+    "filename": "articles/article-1758728557231.json",
+    "description": "Moderní přístup k zobrazování XML dat v React aplikacích",
+    "tags": [
+      "React",
+      "Javascript",
+      "Frontend"
+    ],
+    "category": "tutorial, technologie",
+    "metadata": {
+      "readingTime": "5 min"
+    },
+    "title.en": "XML Viewer SPA",
+    "description.en": "Modern Approach to Displaying XML Data in React Applications",
+    "tags.en": [
+      "React",
+      "Javascript",
+      "Frontend"
+    ],
+    "category.en": "tutorial, technology"
+  },
+  {
     "id": "article-1758142547398",
     "title": "Matrix Binary Screensaver",
     "date": "2025-09-17",
