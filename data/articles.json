@@ -32,7 +32,8 @@
     ],
     "category": "tutorial, technologie",
     "metadata": {
-      "readingTime": "5 min"
+      "readingTime": "5 min",
+      "repo": "xml-viewer-app"
     },
     "title.en": "XML Viewer SPA",
     "description.en": "Modern Approach to Displaying XML Data in React Applications",
