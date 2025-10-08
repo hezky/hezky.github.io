@@ -57,7 +57,8 @@
     "category": "tutorial, technologie",
     "metadata": {
       "author": "David Hezky",
-      "readingTime": "10 min"
+      "readingTime": "10 min",
+      "repo": "matrix-saver"
     },
     "title.en": "Matrix Binary Screensaver",
     "description.en": "Journey from Iconic Effect to Modern Web Implementation.",
@@ -142,9 +143,12 @@
     "category": "framework",
     "metadata": {
       "author": "David Hezky",
-      "readingTime": "7 min"
+      "readingTime": "7 min",
+      "repo": "dnd-kit-index-problem"
     },
     "title.en": "@dnd-kit: Problem with indexes as IDs",
-    "description.en": "Using array indices as identifiers in the @dnd-kit library can lead to serious drag and drop errors, loss of internal component state, incorrect animations, and performance issues. This article explains why stable IDs are crucial for proper drag & drop logic, how @dnd-kit works with identifiers, and provides proper techniques for generating and managing IDs. Suitable for all React developers who want to create robust and error-free user interfaces."
+    "description.en": "Using array indices as identifiers in the @dnd-kit library can lead to serious drag and drop errors, loss of internal component state, incorrect animations, and performance issues. This article explains why stable IDs are crucial for proper drag & drop logic, how @dnd-kit works with identifiers, and provides proper techniques for generating and managing IDs. Suitable for all React developers who want to create robust and error-free user interfaces.",
+    "tags.en": [],
+    "category.en": ""
   }
 ]
