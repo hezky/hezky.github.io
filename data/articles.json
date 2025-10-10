@@ -8,7 +8,7 @@
     "tags": [
       "budhismus"
     ],
-    "category": "budhismus",
+    "category": "BU",
     "metadata": {
       "readingTime": "20 min"
     },
@@ -30,7 +30,7 @@
       "Javascript",
       "Frontend"
     ],
-    "category": "tutorial, technologie",
+    "category": "IT",
     "metadata": {
       "readingTime": "5 min",
       "repo": "xml-viewer-app"
@@ -55,7 +55,7 @@
       "Javascript",
       "Frontend"
     ],
-    "category": "tutorial, technologie",
+    "category": "IT",
     "metadata": {
       "author": "David Hezky",
       "readingTime": "10 min",
@@ -84,7 +84,7 @@
       "monitoring",
       "zdravi-aplikaci"
     ],
-    "category": "tutorial, technologie",
+    "category": "IT",
     "metadata": {
       "author": "Mini Blog Team",
       "readingTime": "15 min"
@@ -114,7 +114,7 @@
       "SPA",
       "Blog"
     ],
-    "category": "tutorial, technologie, Web, SPA",
+    "category": "IT",
     "metadata": {
       "author": "David Hezky",
       "readingTime": "15 min"
@@ -141,7 +141,7 @@
       "Javascript",
       "frontend"
     ],
-    "category": "framework",
+    "category": "IT",
     "metadata": {
       "author": "David Hezky",
       "readingTime": "7 min",

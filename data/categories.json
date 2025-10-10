@@ -1,0 +1,26 @@
+[
+  {
+    "code": "BU",
+    "label": {
+      "cs": "Budhismus",
+      "en": "Buddhism"
+    },
+    "colors": {
+      "background": "#E07A1F",
+      "text": "#FFFFFF",
+      "border": "#E07A1F"
+    }
+  },
+  {
+    "code": "IT",
+    "label": {
+      "cs": "Informační technologie",
+      "en": "Information Technology"
+    },
+    "colors": {
+      "background": "#1976D2",
+      "text": "#FFFFFF",
+      "border": "#1976D2"
+    }
+  }
+]
