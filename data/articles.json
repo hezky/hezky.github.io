@@ -16,8 +16,7 @@
     "description.en": "The Law of Cause and Effect in Buddhist Practice",
     "tags.en": [
       "buddhism"
-    ],
-    "category.en": null
+    ]
   },
   {
     "id": "article-1758915461515",
@@ -36,8 +35,7 @@
     "description.en": "Transience from the perspective of Tibetan Buddhism of the Karma Kagyu lineage",
     "tags.en": [
       "buddhismus"
-    ],
-    "category.en": "buddhismus"
+    ]
   },
   {
     "id": "article-1758728557231",
@@ -61,8 +59,7 @@
       "React",
       "Javascript",
       "Frontend"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1758142547398",
@@ -87,8 +84,7 @@
       "React",
       "Javascript",
       "Frontend"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1757854696834",
@@ -118,8 +114,7 @@
       "architecture",
       "monitoring",
       "health-checks"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1757879304405",
@@ -147,8 +142,7 @@
       "GitHub Pages",
       "SPA",
       "Blog"
-    ],
-    "category.en": "tutorial, technology, Web, SPA"
+    ]
   },
   {
     "id": "article-1753387272610",
@@ -169,7 +163,6 @@
     },
     "title.en": "@dnd-kit: Problem with indexes as IDs",
     "description.en": "Using array indices as identifiers in the @dnd-kit library can lead to serious drag and drop errors, loss of internal component state, incorrect animations, and performance issues. This article explains why stable IDs are crucial for proper drag & drop logic, how @dnd-kit works with identifiers, and provides proper techniques for generating and managing IDs. Suitable for all React developers who want to create robust and error-free user interfaces.",
-    "tags.en": [],
-    "category.en": ""
+    "tags.en": []
   }
 ]
