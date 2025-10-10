@@ -1,5 +1,25 @@
 [
   {
+    "id": "article-1760132182722",
+    "title": "Karma",
+    "date": "2025-10-10",
+    "filename": "articles/article-1760132182722.json",
+    "description": "Zákon příčiny a následku v buddhistické praxi",
+    "tags": [
+      "budhismus"
+    ],
+    "category": "BU",
+    "metadata": {
+      "readingTime": "20 min"
+    },
+    "title.en": "Karma",
+    "description.en": "The Law of Cause and Effect in Buddhist Practice",
+    "tags.en": [
+      "buddhism"
+    ],
+    "category.en": null
+  },
+  {
     "id": "article-1758915461515",
     "title": "Pomíjivost",
     "date": "2025-09-26",
