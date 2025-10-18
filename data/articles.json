@@ -2,21 +2,22 @@
   {
     "id": "article-1760734100039",
     "title": "Čtyři faktory posilující karmu",
-    "title.en": "Four factors that strengthen karma",
     "date": "2025-10-17",
     "filename": "articles/article-1760734100039.json",
     "description": "V linii Karma Kagjü (a obecně v mahájánovém i vadžrajánovém pojetí buddhismu) se učení o čtyřech faktorech, které posilují karmu, vztahuje k tomu, jak silnou karmickou stopu (tedy energii, tendenci, saṁskāru) určitý čin zanechá v pránické a mentální kontinuitě bytosti.",
-    "description.en": "In the Karma Kagyu lineage (and in both Mahayana and Vajrayana Buddhism in general), the teaching of the four factors that strengthen karma refers to how strong a karmic trace (i.e. energy, tendency, saṁskāra) a certain action leaves in the pranic and mental continuity of a being.",
     "tags": [
       "budhismus"
     ],
+    "category": "BU",
+    "metadata": {
+      "readingTime": "5 min"
+    },
+    "title.en": "Four factors that strengthen karma",
+    "description.en": "In the Karma Kagyu lineage (and in both Mahayana and Vajrayana Buddhism in general), the teaching of the four factors that strengthen karma refers to how strong a karmic trace (i.e. energy, tendency, saṁskāra) a certain action leaves in the pranic and mental continuity of a being.",
     "tags.en": [
       "buddhismus"
     ],
-    "category": "BU",
-    "metadata": {
-      "readingTime": "25 min"
-    }
+    "category.en": null
   },
   {
     "id": "article-1760132182722",
