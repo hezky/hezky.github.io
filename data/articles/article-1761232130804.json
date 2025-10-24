@@ -1,7 +1,7 @@
 {
   "title": "Service Worker",
   "description": "Kompletní průvodce offline webovými aplikacemi",
-  "markdown": "# NOVÝ český obsah\n\nToto je aktualizovaný obsah pro test synchronizace.",
+  "markdown": "# Kompletní test synchronizace\n\nToto je finální test pro ověření, že markdown se ukládá do lokálního adresáře.",
   "tags": [
     "Javascript",
     "Service Worker"
