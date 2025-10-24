@@ -9,7 +9,8 @@
   "category": "IT",
   "metadata": {
     "readingTime": "20 min",
-    "repo": "service-worker"
+    "repo": "service-worker",
+    "testUpdate": "abc123"
   },
   "id": "article-1761232130804",
   "date": "2025-10-23",
