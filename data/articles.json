@@ -15,10 +15,10 @@
       "Javascript",
       "Service Worker"
     ],
-    "category": "IT",
+    "category": "BU",
     "metadata": {
       "readingTime": "20 min",
-      "repo": "service-worker"
+      "repo": "lab_serviceWorker"
     }
   },
   {
