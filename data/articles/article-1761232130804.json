@@ -1,7 +1,7 @@
 {
   "title": "Service Worker",
   "description": "Kompletní průvodce offline webovými aplikacemi",
-  "markdown": "# Test obsah v češtině\n\nToto je testovací obsah.",
+  "markdown": "# NOVÝ český obsah\n\nToto je aktualizovaný obsah pro test synchronizace.",
   "tags": [
     "Javascript",
     "Service Worker"
@@ -9,7 +9,7 @@
   "category": "IT",
   "metadata": {
     "readingTime": "20 min",
-    "repo": "service-worker"
+    "repo": "lab_serviceWorker"
   },
   "id": "article-1761232130804",
   "date": "2025-10-23",
