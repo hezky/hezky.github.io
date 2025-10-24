@@ -2,25 +2,24 @@
   {
     "id": "article-1761232130804",
     "title": "Service Worker",
-    "title.en": "Service Worker",
     "date": "2025-10-23",
     "filename": "articles/article-1761232130804.json",
     "description": "Kompletní průvodce offline webovými aplikacemi",
-    "description.en": "Complete Guide to Offline Web Applications",
     "tags": [
-      "Javascript",
-      "Service Worker"
-    ],
-    "tags.en": [
       "Javascript",
       "Service Worker"
     ],
     "category": "IT",
     "metadata": {
       "readingTime": "20 min",
-      "repo": "service-worker",
-      "testField": "newValue"
-    }
+      "repo": "lab_serviceWorker"
+    },
+    "title.en": "Service Worker",
+    "description.en": "Complete Guide to Offline Web Applications",
+    "tags.en": [
+      "Javascript",
+      "Service Worker"
+    ]
   },
   {
     "id": "article-1760734100039",
@@ -39,8 +38,7 @@
     "description.en": "In the Karma Kagyu lineage (and in both Mahayana and Vajrayana Buddhism in general), the teaching of the four factors that strengthen karma refers to how strong a karmic trace (i.e. energy, tendency, saṁskāra) a certain action leaves in the pranic and mental continuity of a being.",
     "tags.en": [
       "buddhismus"
-    ],
-    "category.en": null
+    ]
   },
   {
     "id": "article-1760132182722",
@@ -59,8 +57,7 @@
     "description.en": "The Law of Cause and Effect in Buddhist Practice",
     "tags.en": [
       "buddhism"
-    ],
-    "category.en": null
+    ]
   },
   {
     "id": "article-1758915461515",
@@ -79,8 +76,7 @@
     "description.en": "Transience from the perspective of Tibetan Buddhism of the Karma Kagyu lineage",
     "tags.en": [
       "buddhismus"
-    ],
-    "category.en": "buddhismus"
+    ]
   },
   {
     "id": "article-1758728557231",
@@ -104,8 +100,7 @@
       "React",
       "Javascript",
       "Frontend"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1758142547398",
@@ -130,8 +125,7 @@
       "React",
       "Javascript",
       "Frontend"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1757854696834",
@@ -161,8 +155,7 @@
       "architecture",
       "monitoring",
       "health-checks"
-    ],
-    "category.en": "tutorial, technology"
+    ]
   },
   {
     "id": "article-1757879304405",
@@ -190,8 +183,7 @@
       "GitHub Pages",
       "SPA",
       "Blog"
-    ],
-    "category.en": "tutorial, technology, Web, SPA"
+    ]
   },
   {
     "id": "article-1753387272610",
@@ -212,7 +204,6 @@
     },
     "title.en": "@dnd-kit: Problem with indexes as IDs",
     "description.en": "Using array indices as identifiers in the @dnd-kit library can lead to serious drag and drop errors, loss of internal component state, incorrect animations, and performance issues. This article explains why stable IDs are crucial for proper drag & drop logic, how @dnd-kit works with identifiers, and provides proper techniques for generating and managing IDs. Suitable for all React developers who want to create robust and error-free user interfaces.",
-    "tags.en": [],
-    "category.en": ""
+    "tags.en": []
   }
 ]
