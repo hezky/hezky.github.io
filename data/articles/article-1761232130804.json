@@ -6,10 +6,10 @@
     "Javascript",
     "Service Worker"
   ],
-  "category": "IT",
+  "category": "BU",
   "metadata": {
     "readingTime": "20 min",
-    "repo": "service-worker"
+    "repo": "lab_serviceWorker"
   },
   "id": "article-1761232130804",
   "date": "2025-10-23",
