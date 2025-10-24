@@ -2,24 +2,24 @@
   {
     "id": "article-1761232130804",
     "title": "Service Worker",
+    "title.en": "Service Worker",
     "date": "2025-10-23",
     "filename": "articles/article-1761232130804.json",
     "description": "Kompletní průvodce offline webovými aplikacemi",
+    "description.en": "Complete Guide to Offline Web Applications",
     "tags": [
+      "Javascript",
+      "Service Worker"
+    ],
+    "tags.en": [
       "Javascript",
       "Service Worker"
     ],
     "category": "",
     "metadata": {
-      "readingTime": "20 min"
-    },
-    "title.en": "Service Worker",
-    "description.en": "Complete Guide to Offline Web Applications",
-    "tags.en": [
-      "Javascript",
-      "Service Worker"
-    ],
-    "category.en": null
+      "readingTime": "20 min",
+      "repo": "service-wroker"
+    }
   },
   {
     "id": "article-1760734100039",
