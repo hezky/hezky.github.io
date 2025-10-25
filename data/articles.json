@@ -21,24 +21,24 @@
   {
     "id": "article-1761232130804",
     "title": "Service Worker",
-    "title.en": "Service Worker",
     "date": "2025-10-23",
     "filename": "articles/article-1761232130804.json",
     "description": "Test update",
-    "description.en": "Complete Guide to Offline Web Applications",
     "tags": [
       "test"
-    ],
-    "tags.en": [
-      "Javascript",
-      "Service Worker"
     ],
     "category": "IT",
     "metadata": {
       "readingTime": "20 min",
       "repo": "service-worker",
       "testUpdate": "abc123"
-    }
+    },
+    "title.en": "Service Worker",
+    "description.en": "Complete Guide to Offline Web Applications",
+    "tags.en": [
+      "Javascript",
+      "Service Worker"
+    ]
   },
   {
     "id": "article-1760734100039",
