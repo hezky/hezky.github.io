@@ -2,21 +2,22 @@
   {
     "id": "article-1761558396836",
     "title": "Poklony",
+    "title.en": "Postrations",
     "date": "2025-10-27",
     "filename": "articles/article-1761558396836.json",
     "description": "Poklony v tradici Karma Kagyu: Kompletní průvodce praxí a realizací",
+    "description.en": "Prostrations in the Karma Kagyu Tradition: A Complete Guide to Practice and Realization",
     "tags": [
       "budhismus"
     ],
-    "category": "BU",
-    "metadata": {
-      "readingTime": "20 min"
-    },
-    "title.en": "Postrations",
-    "description.en": "Prostrations in the Karma Kagyu Tradition: A Complete Guide to Practice and Realization",
     "tags.en": [
       "buddhism"
-    ]
+    ],
+    "category": "BU",
+    "metadata": {
+      "readingTime": "20 min",
+      "repo": "prostrations"
+    }
   },
   {
     "id": "article-1761335261173",
