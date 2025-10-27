@@ -905,22 +905,551 @@ Implementace Service Workeru přináší aplikaci zásadní vylepšení:
 
 Service Worker je mocný nástroj, který s minimálním kódem (~70 řádků) výrazně zlepšuje uživatelský zážitek. Pro jednoduchou aplikaci jako Ngöndro Counter je Stale-While-Revalidate ideální volba - poskytuje rychlost cache-first strategie s čerstvostí dat network-first přístupu.
 
-## Budoucí vylepšení
+## Zvukové efekty pomocí Web Audio API
 
-### 1. Web App Manifest
+Aplikace nyní obsahuje kompletní systém zvukových efektů, které poskytují haptickou zpětnou vazbu uživateli během meditační praxe. Zvuky jsou generovány pomocí Web Audio API přímo v prohlížeči bez externích audio souborů.
 
-Dokončit PWA funkcionalitu přidáním manifestu pro instalaci na home screen
+### Proč Web Audio API místo audio souborů?
 
-### 2. Zvukové efekty
+Tradiční přístup by byl použít `.mp3` nebo `.wav` soubory:
 
-Jemný klik nebo zvuček při dosažení milníků:
 ```javascript
+// Tradiční přístup (NENÍ použit)
 const audio = new Audio('click.mp3');
 audio.volume = 0.3;
 audio.play();
 ```
 
-### 3. Statistiky a history
+**Problémy tohoto přístupu:**
+- 📦 **Velikost**: Audio soubory zabírají 50-500 KB každý
+- 🌐 **Síťové requesty**: Každý soubor musí být stažen
+- ⏱️ **Latence**: Zpoždění při načítání souborů
+- 💾 **Cache management**: Složitější správa offline cache
+- 🎵 **Kvalita**: Komprese může zhoršit zvuk
+
+**Výhody Web Audio API:**
+- 🪶 **Malá velikost**: Pouze ~5 KB JavaScript kódu
+- ⚡ **Nulová latence**: Zvuky generovány okamžitě
+- 📴 **Offline-first**: Žádné externí závislosti
+- 🎼 **Přesnost**: Matematicky čisté tóny
+- 🔧 **Flexibilita**: Snadná úprava parametrů
+
+### Implementace Sound Manageru
+
+Kompletní správa zvuků je implementována v samostatné třídě `SoundManager`:
+
+```javascript
+class SoundManager {
+  constructor() {
+    this.audioContext = null;
+    this.soundEnabled = true;
+    this.loadSoundPreference();
+  }
+
+  // Lazy initialization - kvůli autoplay policy
+  initAudioContext() {
+    if (!this.audioContext) {
+      try {
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      } catch (error) {
+        console.error('Web Audio API not supported:', error);
+        this.soundEnabled = false;
+      }
+    }
+  }
+}
+```
+
+**Lazy initialization** je klíčové kvůli browser autoplay policy:
+- Moderní prohlížeče blokují autoplay audio
+- AudioContext musí být vytvořen po user interaction
+- První kliknutí uživatele inicializuje audio kontext
+
+### Tři typy zvuků
+
+#### 1. Click Sound - Základní kliknutí
+
+Jednoduchý sinusový tón při každém kliknutí na čítač:
+
+```javascript
+playClick() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  const oscillator = this.audioContext.createOscillator();
+  const gainNode = this.audioContext.createGain();
+
+  oscillator.connect(gainNode);
+  gainNode.connect(this.audioContext.destination);
+
+  // Nastavení
+  oscillator.frequency.value = 800; // Hz
+  oscillator.type = 'sine';
+
+  // Volume envelope (rychlé fade out)
+  gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.05);
+
+  // Přehrát 50ms
+  oscillator.start(this.audioContext.currentTime);
+  oscillator.stop(this.audioContext.currentTime + 0.05);
+}
+```
+
+**Klíčové koncepty:**
+- **Oscillator**: Generátor audio signálu
+- **GainNode**: Řízení hlasitosti
+- **Frequency**: 800 Hz (příjemná výška)
+- **Type: sine**: Čistý sinusový tón bez harmonických
+- **Envelope**: Exponential ramp pro přirozený fade out
+- **Duration**: 50ms - dostatečně krátké, ne rušivé
+
+#### 2. Milestone Sound - Dosažení milníku
+
+Příjemný akord při dosažení 25%, 50% a 75% postupu:
+
+```javascript
+playMilestone() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  // C dur akord: C5, E5, G5
+  const frequencies = [523.25, 659.25, 783.99];
+  const startTime = this.audioContext.currentTime;
+
+  frequencies.forEach((freq, index) => {
+    const oscillator = this.audioContext.createOscillator();
+    const gainNode = this.audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioContext.destination);
+
+    oscillator.frequency.value = freq;
+    oscillator.type = 'sine';
+
+    // Volume envelope s mírným zpožděním pro každý tón
+    const noteStart = startTime + (index * 0.05);
+    gainNode.gain.setValueAtTime(0, noteStart);
+    gainNode.gain.linearRampToValueAtTime(0.15, noteStart + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, noteStart + 0.6);
+
+    oscillator.start(noteStart);
+    oscillator.stop(noteStart + 0.6);
+  });
+}
+```
+
+**Hudební teorie:**
+- **C dur akord**: Základní dur akord (veselý, pozitivní)
+- **C5 (523.25 Hz)**: Tónika (základní tón)
+- **E5 (659.25 Hz)**: Tercie (definuje dur charakter)
+- **G5 (783.99 Hz)**: Kvinta (stabilita)
+
+**Timing:**
+- Každý tón začíná o 50ms později (cascade effect)
+- Celková délka: 600ms
+- Attack: 20ms (lineární ramp)
+- Release: 580ms (exponential ramp)
+
+**Proč tento akord?**
+- C dur je univerzálně příjemný akord
+- Bez disonance - vhodné pro meditaci
+- Vyšší oktáva (C5) - příjemná, ne rušivá
+
+#### 3. Completion Sound - Dokončení cíle
+
+Vzestupná melodie při dosažení 100%:
+
+```javascript
+playCompletion() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  // Vzestupné tóny: C5 - E5 - G5 - C6
+  const notes = [
+    { freq: 523.25, time: 0 },     // C5
+    { freq: 659.25, time: 0.15 },  // E5
+    { freq: 783.99, time: 0.3 },   // G5
+    { freq: 1046.50, time: 0.45 }  // C6 (oktáva výš)
+  ];
+
+  notes.forEach((note) => {
+    const oscillator = this.audioContext.createOscillator();
+    const gainNode = this.audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioContext.destination);
+
+    oscillator.frequency.value = note.freq;
+    oscillator.type = 'sine';
+
+    const startTime = this.audioContext.currentTime + note.time;
+    gainNode.gain.setValueAtTime(0, startTime);
+    gainNode.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.4);
+  });
+}
+```
+
+**Melodická struktura:**
+1. **C5** (t=0ms): Začátek
+2. **E5** (t=150ms): Vzestup
+3. **G5** (t=300ms): Další vzestup
+4. **C6** (t=450ms): Triumfální vrchol (oktáva výš)
+
+**Psychologický efekt:**
+- Vzestupná melodie = dosažení úspěchu
+- Rychlé tempo (150ms mezi tóny) = energie
+- Oktávový skok = dramatický závěr
+- Dur tonalita = pozitivita
+
+### Integrace do aplikace
+
+Zvuky jsou integrovány do counter logiky v `app.js`:
+
+```javascript
+function handleCounterClick(event) {
+  // ... validace ...
+
+  state.count++;
+
+  // Přehrání odpovídajícího zvuku
+  if (window.soundManager) {
+    const newCount = state.mode === 2 ? state.count * 6 : state.count;
+
+    // Dokončení (100%)
+    if (newCount >= state.max) {
+      soundManager.playCompletion();
+    }
+    // Milníky (25%, 50%, 75%)
+    else if (newCount === Math.floor(state.max * 0.25) ||
+             newCount === Math.floor(state.max * 0.5) ||
+             newCount === Math.floor(state.max * 0.75)) {
+      soundManager.playMilestone();
+    }
+    // Normální kliknutí
+    else {
+      soundManager.playClick();
+    }
+  }
+
+  updateDisplay();
+  saveStateToLocalStorage();
+}
+```
+
+**Logika rozhodování:**
+1. Nejprve zkontroluj dokončení (100%)
+2. Pak zkontroluj milníky (25%, 50%, 75%)
+3. Jinak přehraj základní click
+
+**Příklad s default maximum 108:**
+- Klik 1-26: Click sound
+- Klik 27: Milestone (25% = 27)
+- Klik 28-53: Click sound
+- Klik 54: Milestone (50% = 54)
+- Klik 55-80: Click sound
+- Klik 81: Milestone (75% = 81)
+- Klik 82-107: Click sound
+- Klik 108: Completion (100%)
+
+### User Control - Zapnutí/Vypnutí zvuku
+
+UI pro ovládání zvuku v settings modalu:
+
+```html
+<div class="setting">
+  <label class="setting__label">Sound Effects:</label>
+  <button class="setting__button" id="soundToggleBtn">Sound: ON</button>
+</div>
+```
+
+JavaScript obsluha:
+
+```javascript
+function handleSoundToggle() {
+  if (window.soundManager) {
+    soundManager.toggleSound();
+    updateSoundToggleButton();
+
+    // Testovací zvuk při zapnutí
+    if (soundManager.isSoundEnabled()) {
+      soundManager.playClick();
+    }
+  }
+}
+
+function updateSoundToggleButton() {
+  if (window.soundManager && elements.soundToggleBtn) {
+    const isEnabled = soundManager.isSoundEnabled();
+    elements.soundToggleBtn.textContent = `Sound: ${isEnabled ? 'ON' : 'OFF'}`;
+  }
+}
+```
+
+**UX detaily:**
+- Tlačítko zobrazuje aktuální stav (ON/OFF)
+- Test sound při zapnutí = okamžitá zpětná vazba
+- Klávesová zkratka **S** (v menu)
+- Preference se ukládá do localStorage
+
+### LocalStorage Persistence
+
+Preference se ukládá across sessions:
+
+```javascript
+saveSoundPreference() {
+  try {
+    localStorage.setItem('ngondro-sound-enabled', JSON.stringify(this.soundEnabled));
+  } catch (error) {
+    console.error('Failed to save sound preference:', error);
+  }
+}
+
+loadSoundPreference() {
+  try {
+    const saved = localStorage.getItem('ngondro-sound-enabled');
+    if (saved !== null) {
+      this.soundEnabled = JSON.parse(saved);
+    }
+  } catch (error) {
+    console.error('Failed to load sound preference:', error);
+  }
+}
+```
+
+**Error handling:**
+- Try-catch pro localStorage (může být blokován)
+- Default: zvuk zapnutý
+- Aplikace funguje i když localStorage selže
+
+### Browser Autoplay Policy
+
+Moderní prohlížeče mají přísná pravidla pro autoplay:
+
+**Chrome/Edge policy:**
+- Audio se nesmí spustit bez user interaction
+- AudioContext musí být vytvořen po user gesture
+- Platí pro všechny audio elementy
+
+**Safari policy:**
+- Ještě přísnější než Chrome
+- Vyžaduje přímou user interaction
+- Audio musí být spuštěn synchronně s kliknutím
+
+**Řešení v aplikaci:**
+```javascript
+// Lazy initialization - vytvoříme až když potřebujeme
+initAudioContext() {
+  if (!this.audioContext) {
+    try {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (error) {
+      console.error('Web Audio API not supported:', error);
+      this.soundEnabled = false;
+    }
+  }
+}
+```
+
+- První kliknutí uživatele inicializuje kontext
+- Všechny následující zvuky fungují normálně
+- Graceful degradation pokud API není podporováno
+
+### Performance Considerations
+
+**Memory usage:**
+- AudioContext: ~100 KB v paměti
+- Každý oscillator: ~10 KB (dočasně)
+- Celková overhead: Zanedbatelná
+
+**CPU usage:**
+- Web Audio API běží v audio threadu
+- Neblokuje main thread
+- GPU accelerated v moderních prohlížečích
+
+**Battery impact:**
+- Minimální - zvuky jsou krátké (50-600ms)
+- Oscillators se automaticky garbage collectují
+- Audio kontext lze suspendovat když není potřeba
+
+**Optimalizace pro production:**
+```javascript
+// Suspend audio context když aplikace není viditelná
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && audioContext) {
+    audioContext.suspend();
+  } else if (!document.hidden && audioContext) {
+    audioContext.resume();
+  }
+});
+```
+
+Toto není v současné implementaci, ale je to best practice pro větší aplikace.
+
+### Cross-browser Compatibility
+
+Web Audio API je podporováno ve všech moderních prohlížečích:
+
+| Prohlížeč | Verze | Poznámky |
+|-----------|-------|----------|
+| Chrome | 35+ | Plná podpora |
+| Firefox | 25+ | Plná podpora |
+| Safari | 14.1+ | Vyžaduje user gesture |
+| Edge | 79+ | Plná podpora (Chromium) |
+| Opera | 22+ | Plná podpora |
+| iOS Safari | 14.5+ | Vyžaduje user interaction |
+
+**Fallback pro staré prohlížeče:**
+```javascript
+try {
+  this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+} catch (error) {
+  console.error('Web Audio API not supported:', error);
+  this.soundEnabled = false;
+}
+```
+
+- Aplikace funguje i bez zvuku
+- Žádná chyba pro uživatele
+- Graceful degradation
+
+### Testing Sound Effects
+
+**Manuální testování:**
+1. Otevřít aplikaci
+2. Kliknout na counter → měl by znít click
+3. Dosáhnout 27/108 → měl by znít milestone
+4. Dosáhnout 108/108 → měla by znít completion melodie
+5. Otevřít menu → Sound toggle
+6. Vypnout zvuk → žádné zvuky
+7. Zapnout zvuk → test sound + normální funkce
+
+**DevTools Console testing:**
+```javascript
+// Test jednotlivých zvuků
+soundManager.playClick();
+soundManager.playMilestone();
+soundManager.playCompletion();
+
+// Test toggle
+soundManager.toggleSound();
+soundManager.isSoundEnabled(); // false
+
+soundManager.toggleSound();
+soundManager.isSoundEnabled(); // true
+```
+
+**Automatizované testování (pro produkci):**
+```javascript
+describe('SoundManager', () => {
+  test('creates audio context lazily', () => {
+    const sm = new SoundManager();
+    expect(sm.audioContext).toBeNull();
+
+    sm.initAudioContext();
+    expect(sm.audioContext).toBeDefined();
+  });
+
+  test('toggles sound state', () => {
+    const sm = new SoundManager();
+    expect(sm.isSoundEnabled()).toBe(true);
+
+    sm.toggleSound();
+    expect(sm.isSoundEnabled()).toBe(false);
+  });
+
+  test('saves preference to localStorage', () => {
+    const sm = new SoundManager();
+    sm.toggleSound();
+
+    const saved = JSON.parse(localStorage.getItem('ngondro-sound-enabled'));
+    expect(saved).toBe(false);
+  });
+});
+```
+
+### Accessibility Considerations
+
+**Pro uživatele se sluchovým postižením:**
+- Zvuky jsou čistě doplňkové (nice-to-have)
+- Vizuální feedback zůstává primární
+- Aplikace je plně funkční bez zvuku
+
+**Pro uživatele s citlivostí na zvuk:**
+- Snadné vypnutí (jedno kliknutí)
+- Klávesová zkratka **S**
+- Preference se pamatuje
+- Defaultně zapnuto (většina uživatelů to ocení)
+
+**Pro uživatele s ADHD/autismem:**
+- Zvuky jsou jemné, ne překvapivé
+- Konstantní hlasitost
+- Predictable patterns
+- Možnost vypnout kdykoliv
+
+### Future Enhancements
+
+Možná vylepšení zvukového systému:
+
+**1. Vlastní frekvence:**
+```javascript
+// Nastavení v UI
+soundManager.setClickFrequency(600); // Nižší tón
+soundManager.setClickFrequency(1000); // Vyšší tón
+```
+
+**2. Hlasitost slider:**
+```javascript
+soundManager.setVolume(0.5); // 50% hlasitosti
+```
+
+**3. Různé sound themes:**
+```javascript
+soundManager.setTheme('bells'); // Zvonek
+soundManager.setTheme('tones'); // Současné tóny
+soundManager.setTheme('nature'); // Přírodní zvuky (pořád syntetické)
+```
+
+**4. Haptická zpětná vazba na mobilu:**
+```javascript
+if ('vibrate' in navigator) {
+  navigator.vibrate(10); // 10ms vibrace
+}
+```
+
+**5. Spatial audio:**
+```javascript
+const panner = audioContext.createPanner();
+panner.setPosition(1, 0, 0); // Pravý kanál
+```
+
+### Závěr Sound Effects sekce
+
+Implementace zvukových efektů pomocí Web Audio API přináší významné výhody:
+
+✅ **Malá velikost** - 5 KB vs 500+ KB audio souborů
+✅ **Nulová latence** - okamžitá odezva
+✅ **Offline-first** - žádné síťové requesty
+✅ **Flexibilní** - snadná customizace
+✅ **Performantní** - GPU accelerated
+✅ **Accessible** - lze vypnout
+✅ **Cross-browser** - funguje všude
+
+Zvuky poskytují jemnou, ne rušivou zpětnou vazbu, která zlepšuje uživatelský zážitek během meditační praxe. Tři typy zvuků (click, milestone, completion) vytvářejí progresivní audio feedback, který motivuje uživatele k dokončení cíle.
+
+## Budoucí vylepšení
+
+### 1. Statistiky a history
 
 Ukládání historie sezení:
 ```javascript

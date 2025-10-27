@@ -905,22 +905,551 @@ Service Worker implementation brings crucial improvements to the application:
 
 Service Worker is a powerful tool that with minimal code (~70 lines) significantly improves user experience. For a simple application like Ngöndro Counter, Stale-While-Revalidate is the ideal choice - it provides the speed of cache-first strategy with the data freshness of network-first approach.
 
-## Future Improvements
+## Sound Effects Using Web Audio API
 
-### 1. Web App Manifest
+The application now includes a complete sound effects system that provides haptic feedback to the user during meditation practice. Sounds are generated using the Web Audio API directly in the browser without external audio files.
 
-Complete PWA functionality by adding manifest for home screen installation
+### Why Web Audio API Instead of Audio Files?
 
-### 2. Sound Effects
+The traditional approach would be to use `.mp3` or `.wav` files:
 
-Gentle click or sound when reaching milestones:
 ```javascript
+// Traditional approach (NOT used)
 const audio = new Audio('click.mp3');
 audio.volume = 0.3;
 audio.play();
 ```
 
-### 3. Statistics and History
+**Problems with this approach:**
+- 📦 **Size**: Audio files take 50-500 KB each
+- 🌐 **Network requests**: Each file must be downloaded
+- ⏱️ **Latency**: Delay when loading files
+- 💾 **Cache management**: More complex offline cache management
+- 🎵 **Quality**: Compression can degrade sound
+
+**Advantages of Web Audio API:**
+- 🪶 **Small size**: Only ~5 KB of JavaScript code
+- ⚡ **Zero latency**: Sounds generated instantly
+- 📴 **Offline-first**: No external dependencies
+- 🎼 **Precision**: Mathematically pure tones
+- 🔧 **Flexibility**: Easy parameter adjustment
+
+### Sound Manager Implementation
+
+Complete sound management is implemented in a separate `SoundManager` class:
+
+```javascript
+class SoundManager {
+  constructor() {
+    this.audioContext = null;
+    this.soundEnabled = true;
+    this.loadSoundPreference();
+  }
+
+  // Lazy initialization - due to autoplay policy
+  initAudioContext() {
+    if (!this.audioContext) {
+      try {
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      } catch (error) {
+        console.error('Web Audio API not supported:', error);
+        this.soundEnabled = false;
+      }
+    }
+  }
+}
+```
+
+**Lazy initialization** is crucial due to browser autoplay policy:
+- Modern browsers block autoplay audio
+- AudioContext must be created after user interaction
+- First user click initializes audio context
+
+### Three Types of Sounds
+
+#### 1. Click Sound - Basic Click
+
+Simple sine wave tone on each counter click:
+
+```javascript
+playClick() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  const oscillator = this.audioContext.createOscillator();
+  const gainNode = this.audioContext.createGain();
+
+  oscillator.connect(gainNode);
+  gainNode.connect(this.audioContext.destination);
+
+  // Settings
+  oscillator.frequency.value = 800; // Hz
+  oscillator.type = 'sine';
+
+  // Volume envelope (quick fade out)
+  gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.05);
+
+  // Play for 50ms
+  oscillator.start(this.audioContext.currentTime);
+  oscillator.stop(this.audioContext.currentTime + 0.05);
+}
+```
+
+**Key concepts:**
+- **Oscillator**: Audio signal generator
+- **GainNode**: Volume control
+- **Frequency**: 800 Hz (pleasant pitch)
+- **Type: sine**: Pure sine tone without harmonics
+- **Envelope**: Exponential ramp for natural fade out
+- **Duration**: 50ms - short enough, not disruptive
+
+#### 2. Milestone Sound - Reaching Milestone
+
+Pleasant chord when reaching 25%, 50%, and 75% progress:
+
+```javascript
+playMilestone() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  // C major chord: C5, E5, G5
+  const frequencies = [523.25, 659.25, 783.99];
+  const startTime = this.audioContext.currentTime;
+
+  frequencies.forEach((freq, index) => {
+    const oscillator = this.audioContext.createOscillator();
+    const gainNode = this.audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioContext.destination);
+
+    oscillator.frequency.value = freq;
+    oscillator.type = 'sine';
+
+    // Volume envelope with slight delay for each tone
+    const noteStart = startTime + (index * 0.05);
+    gainNode.gain.setValueAtTime(0, noteStart);
+    gainNode.gain.linearRampToValueAtTime(0.15, noteStart + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, noteStart + 0.6);
+
+    oscillator.start(noteStart);
+    oscillator.stop(noteStart + 0.6);
+  });
+}
+```
+
+**Music theory:**
+- **C major chord**: Basic major chord (happy, positive)
+- **C5 (523.25 Hz)**: Tonic (root note)
+- **E5 (659.25 Hz)**: Third (defines major character)
+- **G5 (783.99 Hz)**: Fifth (stability)
+
+**Timing:**
+- Each tone starts 50ms later (cascade effect)
+- Total duration: 600ms
+- Attack: 20ms (linear ramp)
+- Release: 580ms (exponential ramp)
+
+**Why this chord?**
+- C major is universally pleasant chord
+- No dissonance - suitable for meditation
+- Higher octave (C5) - pleasant, not disruptive
+
+#### 3. Completion Sound - Goal Achievement
+
+Ascending melody when reaching 100%:
+
+```javascript
+playCompletion() {
+  if (!this.soundEnabled) return;
+
+  this.initAudioContext();
+  if (!this.audioContext) return;
+
+  // Ascending tones: C5 - E5 - G5 - C6
+  const notes = [
+    { freq: 523.25, time: 0 },     // C5
+    { freq: 659.25, time: 0.15 },  // E5
+    { freq: 783.99, time: 0.3 },   // G5
+    { freq: 1046.50, time: 0.45 }  // C6 (octave higher)
+  ];
+
+  notes.forEach((note) => {
+    const oscillator = this.audioContext.createOscillator();
+    const gainNode = this.audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioContext.destination);
+
+    oscillator.frequency.value = note.freq;
+    oscillator.type = 'sine';
+
+    const startTime = this.audioContext.currentTime + note.time;
+    gainNode.gain.setValueAtTime(0, startTime);
+    gainNode.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.4);
+  });
+}
+```
+
+**Melodic structure:**
+1. **C5** (t=0ms): Beginning
+2. **E5** (t=150ms): Ascent
+3. **G5** (t=300ms): Further ascent
+4. **C6** (t=450ms): Triumphant peak (octave higher)
+
+**Psychological effect:**
+- Ascending melody = achievement success
+- Fast tempo (150ms between tones) = energy
+- Octave jump = dramatic conclusion
+- Major tonality = positivity
+
+### Application Integration
+
+Sounds are integrated into counter logic in `app.js`:
+
+```javascript
+function handleCounterClick(event) {
+  // ... validation ...
+
+  state.count++;
+
+  // Play appropriate sound
+  if (window.soundManager) {
+    const newCount = state.mode === 2 ? state.count * 6 : state.count;
+
+    // Completion (100%)
+    if (newCount >= state.max) {
+      soundManager.playCompletion();
+    }
+    // Milestones (25%, 50%, 75%)
+    else if (newCount === Math.floor(state.max * 0.25) ||
+             newCount === Math.floor(state.max * 0.5) ||
+             newCount === Math.floor(state.max * 0.75)) {
+      soundManager.playMilestone();
+    }
+    // Normal click
+    else {
+      soundManager.playClick();
+    }
+  }
+
+  updateDisplay();
+  saveStateToLocalStorage();
+}
+```
+
+**Decision logic:**
+1. First check completion (100%)
+2. Then check milestones (25%, 50%, 75%)
+3. Otherwise play basic click
+
+**Example with default maximum 108:**
+- Click 1-26: Click sound
+- Click 27: Milestone (25% = 27)
+- Click 28-53: Click sound
+- Click 54: Milestone (50% = 54)
+- Click 55-80: Click sound
+- Click 81: Milestone (75% = 81)
+- Click 82-107: Click sound
+- Click 108: Completion (100%)
+
+### User Control - Sound On/Off
+
+UI for sound control in settings modal:
+
+```html
+<div class="setting">
+  <label class="setting__label">Sound Effects:</label>
+  <button class="setting__button" id="soundToggleBtn">Sound: ON</button>
+</div>
+```
+
+JavaScript handling:
+
+```javascript
+function handleSoundToggle() {
+  if (window.soundManager) {
+    soundManager.toggleSound();
+    updateSoundToggleButton();
+
+    // Test sound when enabling
+    if (soundManager.isSoundEnabled()) {
+      soundManager.playClick();
+    }
+  }
+}
+
+function updateSoundToggleButton() {
+  if (window.soundManager && elements.soundToggleBtn) {
+    const isEnabled = soundManager.isSoundEnabled();
+    elements.soundToggleBtn.textContent = `Sound: ${isEnabled ? 'ON' : 'OFF'}`;
+  }
+}
+```
+
+**UX details:**
+- Button shows current state (ON/OFF)
+- Test sound when enabling = immediate feedback
+- Keyboard shortcut **S** (in menu)
+- Preference saved to localStorage
+
+### LocalStorage Persistence
+
+Preference is saved across sessions:
+
+```javascript
+saveSoundPreference() {
+  try {
+    localStorage.setItem('ngondro-sound-enabled', JSON.stringify(this.soundEnabled));
+  } catch (error) {
+    console.error('Failed to save sound preference:', error);
+  }
+}
+
+loadSoundPreference() {
+  try {
+    const saved = localStorage.getItem('ngondro-sound-enabled');
+    if (saved !== null) {
+      this.soundEnabled = JSON.parse(saved);
+    }
+  } catch (error) {
+    console.error('Failed to load sound preference:', error);
+  }
+}
+```
+
+**Error handling:**
+- Try-catch for localStorage (may be blocked)
+- Default: sound enabled
+- Application works even if localStorage fails
+
+### Browser Autoplay Policy
+
+Modern browsers have strict autoplay rules:
+
+**Chrome/Edge policy:**
+- Audio must not start without user interaction
+- AudioContext must be created after user gesture
+- Applies to all audio elements
+
+**Safari policy:**
+- Even stricter than Chrome
+- Requires direct user interaction
+- Audio must be started synchronously with click
+
+**Solution in application:**
+```javascript
+// Lazy initialization - create only when needed
+initAudioContext() {
+  if (!this.audioContext) {
+    try {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (error) {
+      console.error('Web Audio API not supported:', error);
+      this.soundEnabled = false;
+    }
+  }
+}
+```
+
+- First user click initializes context
+- All subsequent sounds work normally
+- Graceful degradation if API not supported
+
+### Performance Considerations
+
+**Memory usage:**
+- AudioContext: ~100 KB in memory
+- Each oscillator: ~10 KB (temporary)
+- Total overhead: Negligible
+
+**CPU usage:**
+- Web Audio API runs in audio thread
+- Does not block main thread
+- GPU accelerated in modern browsers
+
+**Battery impact:**
+- Minimal - sounds are short (50-600ms)
+- Oscillators automatically garbage collected
+- Audio context can be suspended when not needed
+
+**Optimization for production:**
+```javascript
+// Suspend audio context when app not visible
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && audioContext) {
+    audioContext.suspend();
+  } else if (!document.hidden && audioContext) {
+    audioContext.resume();
+  }
+});
+```
+
+This is not in current implementation, but is best practice for larger applications.
+
+### Cross-browser Compatibility
+
+Web Audio API is supported in all modern browsers:
+
+| Browser | Version | Notes |
+|---------|---------|-------|
+| Chrome | 35+ | Full support |
+| Firefox | 25+ | Full support |
+| Safari | 14.1+ | Requires user gesture |
+| Edge | 79+ | Full support (Chromium) |
+| Opera | 22+ | Full support |
+| iOS Safari | 14.5+ | Requires user interaction |
+
+**Fallback for old browsers:**
+```javascript
+try {
+  this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+} catch (error) {
+  console.error('Web Audio API not supported:', error);
+  this.soundEnabled = false;
+}
+```
+
+- Application works without sound
+- No error for user
+- Graceful degradation
+
+### Testing Sound Effects
+
+**Manual testing:**
+1. Open application
+2. Click on counter → should hear click
+3. Reach 27/108 → should hear milestone
+4. Reach 108/108 → should hear completion melody
+5. Open menu → Sound toggle
+6. Disable sound → no sounds
+7. Enable sound → test sound + normal function
+
+**DevTools Console testing:**
+```javascript
+// Test individual sounds
+soundManager.playClick();
+soundManager.playMilestone();
+soundManager.playCompletion();
+
+// Test toggle
+soundManager.toggleSound();
+soundManager.isSoundEnabled(); // false
+
+soundManager.toggleSound();
+soundManager.isSoundEnabled(); // true
+```
+
+**Automated testing (for production):**
+```javascript
+describe('SoundManager', () => {
+  test('creates audio context lazily', () => {
+    const sm = new SoundManager();
+    expect(sm.audioContext).toBeNull();
+
+    sm.initAudioContext();
+    expect(sm.audioContext).toBeDefined();
+  });
+
+  test('toggles sound state', () => {
+    const sm = new SoundManager();
+    expect(sm.isSoundEnabled()).toBe(true);
+
+    sm.toggleSound();
+    expect(sm.isSoundEnabled()).toBe(false);
+  });
+
+  test('saves preference to localStorage', () => {
+    const sm = new SoundManager();
+    sm.toggleSound();
+
+    const saved = JSON.parse(localStorage.getItem('ngondro-sound-enabled'));
+    expect(saved).toBe(false);
+  });
+});
+```
+
+### Accessibility Considerations
+
+**For users with hearing impairment:**
+- Sounds are purely supplementary (nice-to-have)
+- Visual feedback remains primary
+- Application fully functional without sound
+
+**For users with sound sensitivity:**
+- Easy to disable (one click)
+- Keyboard shortcut **S**
+- Preference remembered
+- Enabled by default (most users appreciate it)
+
+**For users with ADHD/autism:**
+- Sounds are gentle, not surprising
+- Constant volume
+- Predictable patterns
+- Can be disabled anytime
+
+### Future Enhancements
+
+Possible sound system improvements:
+
+**1. Custom frequencies:**
+```javascript
+// Settings in UI
+soundManager.setClickFrequency(600); // Lower tone
+soundManager.setClickFrequency(1000); // Higher tone
+```
+
+**2. Volume slider:**
+```javascript
+soundManager.setVolume(0.5); // 50% volume
+```
+
+**3. Different sound themes:**
+```javascript
+soundManager.setTheme('bells'); // Bell sound
+soundManager.setTheme('tones'); // Current tones
+soundManager.setTheme('nature'); // Nature sounds (still synthetic)
+```
+
+**4. Haptic feedback on mobile:**
+```javascript
+if ('vibrate' in navigator) {
+  navigator.vibrate(10); // 10ms vibration
+}
+```
+
+**5. Spatial audio:**
+```javascript
+const panner = audioContext.createPanner();
+panner.setPosition(1, 0, 0); // Right channel
+```
+
+### Sound Effects Section Conclusion
+
+Sound effects implementation using Web Audio API brings significant advantages:
+
+✅ **Small size** - 5 KB vs 500+ KB audio files
+✅ **Zero latency** - instant response
+✅ **Offline-first** - no network requests
+✅ **Flexible** - easy customization
+✅ **Performant** - GPU accelerated
+✅ **Accessible** - can be disabled
+✅ **Cross-browser** - works everywhere
+
+Sounds provide gentle, non-disruptive feedback that enhances user experience during meditation practice. Three types of sounds (click, milestone, completion) create progressive audio feedback that motivates users to complete their goal.
+
+## Future Improvements
+
+### 1. Statistics and History
 
 Storing session history:
 ```javascript
