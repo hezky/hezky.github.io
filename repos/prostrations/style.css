@@ -1,0 +1,441 @@
+/* style.css */
+/* Styles for Ngöndro counter application using BEM methodology */
+/* Does NOT include responsive breakpoints for desktop-first design */
+
+/* ============================================
+   CSS Variables (Black & White theme)
+   ============================================ */
+:root {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-gray: #808080;
+  --color-gray-light: rgba(255, 255, 255, 0.2);
+  --color-gray-dark: rgba(255, 255, 255, 0.5);
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 35vw;
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  font: inherit;
+  color: inherit;
+}
+
+/* ============================================
+   App Container
+   ============================================ */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-background);
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header__logo {
+  width: 48px;
+  height: 48px;
+}
+
+.header__logo-icon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}
+
+.header__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* ============================================
+   Mode Button
+   ============================================ */
+.mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-foreground);
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.mode-btn:hover {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  transform: scale(1.1);
+}
+
+.mode-btn:active {
+  transform: scale(0.95);
+}
+
+.mode-btn__text {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+/* ============================================
+   Menu Button
+   ============================================ */
+.menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  transition: transform var(--transition-fast);
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+
+.menu-btn:active {
+  transform: scale(0.95);
+}
+
+.menu-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ============================================
+   Counter Area
+   ============================================ */
+.counter-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.counter-area:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.counter-area__display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.counter-area__number {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  transition: transform var(--transition-fast);
+  max-width: 90vw;
+  word-wrap: break-word;
+}
+
+.counter-area:active .counter-area__number {
+  transform: scale(0.98);
+}
+
+.counter-area__secondary {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray);
+  align-self: flex-end;
+  margin-right: var(--spacing-xl);
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+.progress {
+  padding: var(--spacing-lg);
+  background-color: var(--color-background);
+}
+
+.progress__container {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Gray background line (thin) */
+.progress__track {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-gray-light);
+  left: 0;
+  z-index: 1;
+}
+
+/* White progress line (3x thicker = 12px) */
+.progress__fill {
+  position: absolute;
+  height: 12px;
+  background-color: var(--color-foreground);
+  left: 0;
+  z-index: 2;
+  transition: width var(--transition-normal);
+  border-radius: 0 6px 6px 0;
+}
+
+/* Stoppers at start and end */
+.progress__stopper {
+  position: absolute;
+  width: 4px;
+  height: 24px;
+  background-color: var(--color-gray-dark);
+  border-radius: 2px;
+  z-index: 3;
+}
+
+.progress__stopper--start {
+  left: 0;
+}
+
+.progress__stopper--end {
+  right: 0;
+}
+
+.progress__label {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+}
+
+/* ============================================
+   Modal
+   ============================================ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal__content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-foreground);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  max-width: 400px;
+  width: 90%;
+  z-index: 1001;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.modal__close {
+  padding: var(--spacing-xs);
+  transition: transform var(--transition-fast);
+}
+
+.modal__close:hover {
+  transform: scale(1.1);
+}
+
+.modal__close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   Settings
+   ============================================ */
+.setting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.setting__label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.setting__input {
+  padding: var(--spacing-sm);
+  background-color: transparent;
+  border: 2px solid var(--color-gray-light);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.setting__input:focus {
+  border-color: var(--color-foreground);
+}
+
+.setting__button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: transparent;
+  border: 2px solid var(--color-foreground);
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.setting__button:hover {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.setting__button:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .header__logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__title {
+    font-size: var(--font-size-md);
+  }
+
+  .mode-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mode-btn__text {
+    font-size: var(--font-size-md);
+  }
+
+  .menu-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .progress {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    font-size: var(--font-size-sm);
+  }
+
+  .progress {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .counter-area__number {
+    font-size: 30vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .counter-area__number {
+    font-size: 28vw;
+  }
+}

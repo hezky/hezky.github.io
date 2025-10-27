@@ -1,0 +1,129 @@
+<!-- index.html -->
+<!-- Single Page Application for Ngöndro meditation counter -->
+<!-- Does NOT include backend functionality or data persistence across sessions -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minimalist meditation counter for Tibetan Buddhism practitioners. Track mantras, prostrations, and meditation practice with offline support.">
+    <title>Ngöndro Counter</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ngöndro">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="apple-touch-icon" href="icon-512.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="app">
+    <!-- Header with logo, title and menu -->
+    <header class="app__header header">
+        <div class="header__left">
+            <div class="header__logo">
+                <!-- Karma Kagyu symbol placeholder - will be styled in CSS -->
+                <svg class="header__logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="50" cy="50" r="30" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="50" cy="50" r="15" stroke="white" stroke-width="2" fill="none"/>
+                    <line x1="50" y1="5" x2="50" y2="95" stroke="white" stroke-width="2"/>
+                    <line x1="5" y1="50" x2="95" y2="50" stroke="white" stroke-width="2"/>
+                </svg>
+            </div>
+            <h1 class="header__title">Ngöndro</h1>
+        </div>
+        <div class="header__right">
+            <button class="header__mode-btn mode-btn" id="modeBtn" aria-label="Switch meditation mode">
+                <span class="mode-btn__text" id="modeIndicator">1</span>
+            </button>
+            <button class="header__menu-btn menu-btn" id="menuBtn" aria-label="Open menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main counter area (clickable) -->
+    <main class="app__main counter-area" id="counterArea">
+        <div class="counter-area__display">
+            <div class="counter-area__number" id="counterNumber">0</div>
+            <div class="counter-area__secondary" id="secondaryNumber"></div>
+        </div>
+    </main>
+
+    <!-- Progress bar -->
+    <footer class="app__footer progress">
+        <div class="progress__container">
+            <!-- Start stopper -->
+            <div class="progress__stopper progress__stopper--start"></div>
+
+            <!-- Progress bar background (gray line) -->
+            <div class="progress__track"></div>
+
+            <!-- Progress bar fill (white line, 3x thicker) -->
+            <div class="progress__fill" id="progressFill"></div>
+
+            <!-- End stopper -->
+            <div class="progress__stopper progress__stopper--end"></div>
+        </div>
+        <div class="progress__label" id="progressLabel">0 / 108</div>
+    </footer>
+
+    <!-- Menu modal (hidden by default) -->
+    <div class="modal" id="menuModal" style="display: none;">
+        <div class="modal__overlay" id="modalOverlay"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2 class="modal__title">Settings</h2>
+                <button class="modal__close" id="modalClose" aria-label="Close menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal__body">
+                <div class="setting">
+                    <label class="setting__label" for="maxInput">Maximum:</label>
+                    <input class="setting__input" type="number" id="maxInput" value="108" min="1">
+                </div>
+                <div class="setting">
+                    <label class="setting__label">Sound Effects:</label>
+                    <button class="setting__button" id="soundToggleBtn">Sound: ON</button>
+                </div>
+                <div class="setting">
+                    <button class="setting__button" id="resetBtn">Reset Counter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sounds.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
